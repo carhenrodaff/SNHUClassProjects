@@ -1,0 +1,30 @@
+/* Name: *
+    Date: 11/4/2022
+    Description: Class test with nested class syntax included
+ * 
+ */
+import java.util.Scanner;
+public class Pet {
+    public class Cat {
+    int catSpaceNumber;
+        public int setCatSpaceNumber(int catSpaceNum){
+            catSpaceNumber = catSpaceNum;
+            return catSpaceNumber;
+            //Uinput is stored into catSpaceNumber
+        }
+        public int getCatSpaceNumber(){
+            System.out.println(catSpaceNumber);
+            return catSpaceNumber;
+            //# of cats is printed and returned.
+        }
+    }
+
+    public static void main(String[] args) {
+        Pet catTest = new Pet();
+        Pet.Cat catTest2 = catTest.new Cat();
+        //New Object cat test is an object of pet and cat.
+        catTest2.setCatSpaceNumber(2);
+        catTest2.getCatSpaceNumber();
+                }
+                }
+            
