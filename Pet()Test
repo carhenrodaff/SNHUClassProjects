@@ -1,13 +1,23 @@
-/* Name: *
+/* Name: Carlos Affonso
     Date: 11/4/2022
     Description: Class test with nested class syntax included
  * 
  */
 import java.util.Scanner;
-public class Pet {
-    public class Cat {
-    int catSpaceNumber;
-        public int setCatSpaceNumber(int catSpaceNum){
+class Pet {
+   private String petType = "default";
+   private String petName = "default";
+   private int petAge = -1;
+   private int dogSpaces = -1;
+   private int catSpaces = -1;
+   private int daysStay = -1;
+   private double amountDue = -1.0;
+}
+
+class Cat extends Pet{
+   private int catSpaceNumber = -1;
+
+        private int setCatSpaceNumber(int catSpaceNum){
             catSpaceNumber = catSpaceNum;
             return catSpaceNumber;
             //Uinput is stored into catSpaceNumber
@@ -17,14 +27,16 @@ public class Pet {
             return catSpaceNumber;
             //# of cats is printed and returned.
         }
-    }
+    
 
     public static void main(String[] args) {
         Pet catTest = new Pet();
-        Pet.Cat catTest2 = catTest.new Cat();
         //New Object cat test is an object of pet and cat.
-        catTest2.setCatSpaceNumber(2);
-        catTest2.getCatSpaceNumber();
-                }
-                }
+        catTest.setCatSpaceNumber(2);
+        catTest.getCatSpaceNumber();
+                
+        }
+
+
+    }
             
