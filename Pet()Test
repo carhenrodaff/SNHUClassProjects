@@ -14,8 +14,11 @@ class Pet {
    private double amountDue = -1.0;
 }
 
-class Cat extends Pet{
-   private int catSpaceNumber = -1;
+public class Cat extends Pet{
+   private int catSpaceNumber;
+        public Cat(){
+            catSpaceNumber = -1;
+        }
 
         private int setCatSpaceNumber(int catSpaceNum){
             catSpaceNumber = catSpaceNum;
@@ -30,7 +33,7 @@ class Cat extends Pet{
     
 
     public static void main(String[] args) {
-        Pet catTest = new Pet();
+        Cat catTest = new Cat();
         //New Object cat test is an object of pet and cat.
         catTest.setCatSpaceNumber(2);
         catTest.getCatSpaceNumber();
