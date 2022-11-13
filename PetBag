@@ -107,5 +107,28 @@ public class Pet{
             dogWeight = 0.0;
             grooming = false;
         }
-    }
+        static String getGrooming(){
+            String variable = 'FIXME: Define getGrooming';
+            return variable;
+        }
+        static String setGrooming(){
+            String variable = 'FIXME: Define setGrooming';
+            return variable;
+        }
+        static String getDogWeight(){
+            String variable = 'FIXME: Define getDogWeight';
+            return variable;
+        }
+        static String setDogWeight(){
+            String variable = 'FIXME: Define setDogWeight';
+            return variable;
+        }
+        static String getDogSpaceNumber(){
+            String variable = 'FIXME: Define getDogSpaceNumber';
+            return variable;
+        }
+        static String setDogSpaceNumber(){
+            String variable = 'FIXME: Define setDogSpaceNumber';
+            return variable;
+        }
 }
