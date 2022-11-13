@@ -1,0 +1,111 @@
+#import java.util.scanner
+
+public class Pet{
+
+    String petType, petName;
+    int dogSpaces, catSpaces, daysStay;
+    double amountDue;
+
+    public Pet(){
+// initialize pet attributes
+        dogSpaces, catSpaces, daysStay = 0;
+        amountDue = 0.0;
+        petType, petName ='noName';
+    }
+    //FIXME
+    static String getPetType(){
+
+        String variable = 'FIXME: Define getPetType()';
+        return variable;
+    }
+    static String setPetType(){
+
+        String variable = 'FIXME: Define setPetType()';
+        return variable;
+    }
+    static String getPetName(){
+
+        String variable = 'FIXME: Define getPetName()';
+        return variable;
+    }
+    static String setPetName(){
+
+        String variable = 'FIXME: Define setPetName()';
+        return variable;
+    }
+    static String getPetAge(){
+
+        String variable = 'FIXME: Define getPetAge()';
+        return variable;
+    }
+    static String setPetAge(){
+
+        String variable = 'FIXME: Define setPetAge()';
+        return variable;
+    }
+
+    static String getDogSpaces(){
+
+        String variable = 'FIXME: Define getDogSpaces()';
+        return variable;
+    }
+    
+    static String setDogSpaces(){
+
+        String variable = 'FIXME: Define setDogSpaces()';
+        return variable;
+    }
+
+    static String getCatSpaces(){
+
+        String variable = 'FIXME: Define getCatSpaces()';
+        return variable;
+    }
+    static String setCatSpaces(){
+
+        String variable = 'FIXME: Define setCatSpaces()';
+        return variable;
+    }
+
+    static String getDaysStay(){
+
+        String variable = 'FIXME: Define getDaysStay()';
+        return variable;
+    }
+
+    static String setDaysStay(){
+
+        String variable = 'FIXME: Define setDaysStay()';
+        return variable;
+    }
+
+    static String getAmountDue(){
+
+        String variable = 'FIXME: Define getAmountDue()'
+        return variable;
+    }
+    public class Cat() extends Pet{
+        int catSpaceNumber;
+        public Cat{
+            catSpaceNumber = 0;
+        }
+        static String getCatSpaceNumber(){
+            String variable = 'FIXME: Define getCatSpaceNumber()';
+            return variable;
+        }
+        static String setCatSpaceNumber(){
+            String variable = 'FIXME: Define setCatSpacenumber()';
+            return variable;
+        }
+    }
+    public class Dog() extends Pet{
+        int dogSpaceNumber;
+        double dogWeight;
+        boolean grooming;
+        class Dog{
+            dogSpaceNumber = 0;
+            dogWeight = 0.0;
+            grooming = false;
+        }
+    }
+}
