@@ -1,0 +1,69 @@
+partition(bids, begin, end):
+    //initialize the low and high indices
+    low = begin
+    high = end
+    //pick the middle element as the pivot
+    mid = low + (high - low) / 2
+    pivot = bids[mid].title
+    //iterate over the bids
+    while true:
+        //increment the low index while the current bid's title is less than the pivot
+        while bids[low].title < pivot:
+            low = low + 1
+        //decrement the high index while the current bid's title is greater than the pivot
+        while bids[high].title > pivot:
+            high = high - 1
+        //if all bids have been partitioned, return the high index
+        if low >= high:
+            return high
+        //otherwise, swap the bids at the low and high indices
+        else:
+            swap bids[low] with bids[high]
+            low = low + 1
+            high = high - 1
+
+quickSort(bids, begin, end):
+    //base case: if there is 1 or 0 bids to sort, they are already sorted
+    if begin >= end:
+        return
+    //partition the bids into low and high
+    mid = partition(bids, begin, end)
+    //recursively sort the low partition
+    quickSort(bids, begin, mid)
+    //recursively sort the high partition
+    quickSort(bids, mid + 1, end)
+selectionSort(bids):
+    //get the size of the bids vector
+    size = size of bids
+    //iterate over the unsorted portion of the bids vector
+    for pos from 0 to size - 2:
+        //assume the current element is the minimum
+        min = pos
+        //iterate over the remaining unsorted elements
+        for i from pos + 1 to size - 1:
+            //if the current element is less than the assumed minimum
+            if bids[i].title < bids[min].title:
+                //update the minimum index
+                min = i
+        //if the minimum element is not the current element
+        if min != pos:
+            //swap the minimum element with the current element
+            swap bids[min] with bids[pos]
+Pseudocode for Cases 3 and 4:
+
+3:
+
+ticks = clock()  // record the starting time
+invoke selectionSort(bids)  // sort the bids using selection sort
+print number of bids sorted
+ticks = clock() - ticks  // calculate elapsed time in clock ticks
+print elapsed time in clock ticks
+print elapsed time in seconds
+4:
+
+ticks = clock()  // record the starting time
+invoke quickSort(bids, 0, bids.size() - 1)  // sort the bids using quick sort
+print number of bids sorted
+ticks = clock() - ticks  // calculate elapsed time in clock ticks
+print elapsed time in clock ticks
+print elapsed time in seconds
