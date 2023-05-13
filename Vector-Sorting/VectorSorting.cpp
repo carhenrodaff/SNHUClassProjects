@@ -27,6 +27,7 @@ struct Bid {
     string title;
     string fund;
     double amount;
+
     Bid() {
         amount = 0.0;
     }
@@ -43,7 +44,7 @@ struct Bid {
  */
 void displayBid(Bid bid) {
     cout << bid.bidId << ": " << bid.title << " | " << bid.amount << " | "
-            << bid.fund << endl;
+         << bid.fund << endl;
     return;
 }
 
@@ -120,22 +121,42 @@ vector<Bid> loadBids(string csvPath) {
  * @param begin Beginning index to partition
  * @param end Ending index to partition
  */
-int partition(vector<Bid>& bids, int begin, int end) {
+int partition(vector<Bid> &bids, int begin, int end) {
     //set low and high equal to begin and end
-
+    int low = begin;
+    int high = end;
     // pick the middle element as pivot point
-    
+    int mid = low + (high - low) / 2;
+    string pivot = bids.at(mid).title;
     // while not done 
-
+    while (true) {
         // keep incrementing low index while bids[low] < bids[pivot]
-       
-        // keep decrementing high index while bids[pivot] < bids[high]
+        // string member function used to compare
+        while (bids.at(low).title.compare(pivot) < 0) {
+            ++low;
+        }
 
-        /* If there are zero or one elements remaining,
+        // keep decrementing high index while bids[pivot] < bids[high]
+        while (bids.at(high).title.compare(pivot) > 0) {
+            --high;
+        }
+
+        /* If there are zero or one elements remaining
             all bids are partitioned. Return high */
-       // else swap the low and high bids (built in vector method)
+        if (low >= high) {
+            break;
+        }
+            // else swap the low and high bids (built in vector method)
             // move low and high closer ++low, --high
+        else {
+            swap(bids.at(low), bids.at(high));
+            ++low;
+            --high;
+        }
+    }
+
     //return high;
+    return high;
 }
 
 /**
@@ -147,20 +168,22 @@ int partition(vector<Bid>& bids, int begin, int end) {
  * @param begin the beginning index to sort on
  * @param end the ending index to sort on
  */
-void quickSort(vector<Bid>& bids, int begin, int end) {
+void quickSort(vector<Bid> &bids, int begin, int end) {
     //set mid equal to 0
-
+    int mid = 0;
     /* Base case: If there are 1 or zero bids to sort,
      partition is already sorted otherwise if begin is greater
      than or equal to end then return*/
-
+    if (begin >= end) {
+        return;
+    }
     /* Partition bids into low and high such that
      midpoint is location of last element in low */
-     
+    mid = partition(bids, begin, end);
     // recursively sort low partition (begin to mid)
-
+    quickSort(bids, begin, mid);
     // recursively sort high partition (mid+1 to end)
-
+    quickSort(bids, mid + 1, end);
 }
 
 // FIXME (1a): Implement the selection sort logic over bid.title
@@ -173,21 +196,32 @@ void quickSort(vector<Bid>& bids, int begin, int end) {
  * @param bid address of the vector<Bid>
  *            instance to be sorted
  */
-void selectionSort(vector<Bid>& bids) {
+void selectionSort(vector<Bid> &bids) {
     //define min as int (index of the current minimum bid)
-
+    int min;
+    int size;
     // check size of bids vector
+    size = bids.size();
     // set size_t platform-neutral result equal to bid.size()
-
-    // pos is the position within bids that divides sorted/unsorted
-    // for size_t pos = 0 and less than size -1 
-        // set min = pos
-        // loop over remaining elements to the right of position
-            // if this element's title is less than minimum title
-                // this element becomes the minimum
-        // swap the current minimum with smaller one found
-            // swap is a built in vector method
+    for (size_t pos = 0; pos < size - 1; pos++) {
+        min = pos;
+        for (size_t i = pos + 1; i < size; i++) {
+            min = i;
+        }
+        if (min != pos) {
+            swap(bids.at(pos), bids.at(min));
+        }
+    }
 }
+// pos is the position within bids that divides sorted/unsorted
+// for size_t pos = 0 and less than size -1
+// set min = pos
+// loop over remaining elements to the right of position
+// if this element's title is less than minimum title
+// this element becomes the minimum
+// swap the current minimum with smaller one found
+// swap is a built in vector method
+
 
 /**
  * Simple C function to convert a string to a double
@@ -205,16 +239,16 @@ double strToDouble(string str, char ch) {
 /**
  * The one and only main() method
  */
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
 
     // process command line arguments
     string csvPath;
     switch (argc) {
-    case 2:
-        csvPath = argv[1];
-        break;
-    default:
-        csvPath = "eBid_Monthly_Sales_Dec_2016.csv";
+        case 2:
+            csvPath = argv[1];
+            break;
+        default:
+            csvPath = "eBid_Monthly_Sales_Dec_2016.csv";
     }
 
     // Define a vector to hold all the bids
@@ -236,35 +270,50 @@ int main(int argc, char* argv[]) {
 
         switch (choice) {
 
-        case 1:
-            // Initialize a timer variable before loading bids
-            ticks = clock();
+            case 1:
+                // Initialize a timer variable before loading bids
+                ticks = clock();
 
-            // Complete the method call to load the bids
-            bids = loadBids(csvPath);
+                // Complete the method call to load the bids
+                bids = loadBids(csvPath);
 
-            cout << bids.size() << " bids read" << endl;
+                cout << bids.size() << " bids read" << endl;
 
-            // Calculate elapsed time and display result
-            ticks = clock() - ticks; // current clock ticks minus starting clock ticks
-            cout << "time: " << ticks << " clock ticks" << endl;
-            cout << "time: " << ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
+                // Calculate elapsed time and display result
+                ticks = clock() - ticks; // current clock ticks minus starting clock ticks
+                cout << "time: " << ticks << " clock ticks" << endl;
+                cout << "time: " << ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
 
-            break;
+                break;
 
-        case 2:
-            // Loop and display the bids read
-            for (int i = 0; i < bids.size(); ++i) {
-                displayBid(bids[i]);
-            }
-            cout << endl;
+            case 2:
+                // Loop and display the bids read
+                for (int i = 0; i < bids.size(); ++i) {
+                    displayBid(bids[i]);
+                }
+                cout << endl;
 
-            break;
+                break;
+            case 3:
+                ticks = clock();
+                selectionSort(bids);
+                cout << bids.size() << " bids sorted" << endl;
+                ticks = clock() - ticks;
+                cout << "time: " << ticks << " clock ticks" << endl;
+                cout << "time: " << ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
+                break;
 
-        // FIXME (1b): Invoke the selection sort and report timing results
+                // FIXME (1b): Invoke the selection sort and report timing results
 
-        // FIXME (2b): Invoke the quick sort and report timing results
-
+                // FIXME (2b): Invoke the quick sort and report timing results
+            case 4:
+                ticks = clock();
+                quickSort(bids, 0, bids.size() - 1);
+                cout << bids.size() << " bids sorted" << endl;
+                ticks = clock() - ticks;
+                cout << "time: " << ticks << " clock ticks" << endl;
+                cout << "time: " << ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
+                break;
         }
     }
 

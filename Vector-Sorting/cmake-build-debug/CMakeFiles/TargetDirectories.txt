@@ -1,0 +1,3 @@
+/home/caheroaf/CLionProjects/VectorSorting2/cmake-build-debug/CMakeFiles/VectorSorting2.dir
+/home/caheroaf/CLionProjects/VectorSorting2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/caheroaf/CLionProjects/VectorSorting2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
