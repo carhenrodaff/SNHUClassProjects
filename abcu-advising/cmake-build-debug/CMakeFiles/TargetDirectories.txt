@@ -1,0 +1,3 @@
+/home/caheroaf/repos/SNHUClassProjects/abcu-advising/cmake-build-debug/CMakeFiles/abcu_advising.dir
+/home/caheroaf/repos/SNHUClassProjects/abcu-advising/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/caheroaf/repos/SNHUClassProjects/abcu-advising/cmake-build-debug/CMakeFiles/rebuild_cache.dir
