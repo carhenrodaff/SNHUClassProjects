@@ -1,0 +1,6 @@
+org/SNHU/ContactService.class
+org/SNHU/TaskService.class
+org/SNHU/AppointmentService.class
+org/SNHU/Contact.class
+org/SNHU/Task.class
+org/SNHU/Appointment.class

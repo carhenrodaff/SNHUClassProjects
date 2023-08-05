@@ -6,7 +6,7 @@
 #include <sstream>
 
 
-int defaultTableSize = 1000;
+int defaultTableSize = 10;
 
 class HashTable {
     struct Course {
@@ -49,9 +49,9 @@ class HashTable {
 
     void Insert(Course course);
 
-    static int partition(std::vector<Node> array, int start, int end);
+    static int partition(std::vector<Node> &array, int start, int end);
 
-    void quickSort(std::vector<Node> array, int start, int end);
+    void quickSort(std::vector<Node> &array, int start, int end);
 
     void PrintAlphanumeric(std::vector<Node> array);
 
@@ -85,9 +85,10 @@ void HashTable::parseText() {
             throw runtime_error("error while opening file");
         }
         Course currentCourse;
-        istringstream iss(line);
+
         while (getline(inputFile, line)) {
-            commaCount = 0; // Reset comma count for each line
+            istringstream iss(line);
+            commaCount = 0; // Reset comma count for each line1
             while (getline(iss, line, ',')) {
                 switch (commaCount) {
                     case 0:
@@ -150,13 +151,13 @@ void HashTable::Insert(Course course) {
         }
     }
 }
-int HashTable::partition(std::vector<Node> array, int start, int end) {
-    Node reference = array.at(0);
-    std::string pivot = reference.course.name;
+int HashTable::partition(std::vector<Node> &array, int start, int end) {
+    Node reference = array.at(start);
+    std::string pivot = reference.course.courseNum;
     int count = 0;
 
     for (int i = start + 1; i <= end; i++) {
-        if (array.at(i).course.name <= pivot) {
+        if (array.at(i).course.courseNum <= pivot) {
             count++;
         }
     }
@@ -166,10 +167,10 @@ int HashTable::partition(std::vector<Node> array, int start, int end) {
     int i = start, j = end;
 
     while (i < pivotIndex && j > pivotIndex){
-        while (array.at(i).course.name <= pivot) {
+        while (array.at(i).course.courseNum <= pivot) {
             i++;
         }
-        while (array.at(j).course.name > pivot){
+        while (array.at(j).course.courseNum > pivot){
             j--;
         }
         if ( i < pivotIndex && j > pivotIndex) {
@@ -178,7 +179,7 @@ int HashTable::partition(std::vector<Node> array, int start, int end) {
     }
     return pivotIndex;
 }
-void HashTable::quickSort(std::vector<Node> array, int start, int end){
+void HashTable::quickSort(std::vector<Node> &array, int start, int end){
     if (start >= end){
         return;
     }
@@ -188,21 +189,44 @@ void HashTable::quickSort(std::vector<Node> array, int start, int end){
 
     quickSort(array, mid + 1, end);
 }
-void HashTable::PrintAlphanumeric(std::vector<Node> array){
-    std::vector<Node>reference = array;
+void HashTable::PrintAlphanumeric(std::vector<Node> array) {
+    int pos = 0;
+    std::vector<Node> newVector;
+    auto itr = array.begin();
+    for (; itr != array.end(); ++itr) {
+        if(itr->key != -1){
+            newVector.push_back(array.at(pos));
+            if(itr->next  != nullptr){
+                newVector.push_back(array.at(pos).next->course);
+            }
+        }
+        ++pos;
+    }
     int q1 = 0;
     int q2 = 0;
-    for(int i = 0; i < reference.at(0).course.name.length();++i){
-        q1 += int(reference.begin()->course.name.at(i));
-    }
-    for(int i = 0; i < reference.at(defaultTableSize - 1).course.name.length();++i){
-        q2 += int(reference.begin()->course.name.at(i));
-    }
-    quickSort(reference, q1, q2);
-    for(auto & itr : reference){
-        if(itr.key != UINT_MAX) {
-            std::cout << itr.course.name << std::endl;
+    std::string nameLength1;
+    std::string nameLength2;
+    for (auto itr = newVector.begin(); itr != newVector.end(); ++itr) {
+        if (itr->course.courseNum != "noname") {
+            nameLength1 = itr->course.courseNum;
+            break;
         }
+    }
+    for (auto itr = newVector.end() - 1; itr != newVector.begin(); --itr) {
+        if (itr->course.courseNum != "noname") {
+            nameLength2 = itr->course.courseNum;
+            break;
+            }
+        }
+    for(char i : nameLength1){
+        q1 += int(i);
+    }
+    for(char i : nameLength2){
+        q2 += int(i);
+    }
+    quickSort(newVector, 0, newVector.size() - 1);
+    for(auto & itr : newVector){
+            std::cout << itr.course.courseNum << ", " << itr.course.name << std::endl;
     }
 }
 void HashTable::Search(std::string courseNumSearch){
@@ -216,6 +240,15 @@ void HashTable::Search(std::string courseNumSearch){
             std::cout << "No entry found.\n";
         }
     else{
+        if(courses.at(NewKeyToAssign).course.courseNum != courseNumSearch){
+            std::cout << "Name: " << courses.at(NewKeyToAssign).next->course.name << std::endl;
+            if(courses.at(NewKeyToAssign).course.prereq1 != "noname1"){
+                std::cout << "Prerequisite 1: " << courses.at(NewKeyToAssign).next->course.prereq1 << std::endl;
+                if(courses.at(NewKeyToAssign).course.prereq2 != "noname2"){
+                    std::cout << "Prerequisite 2: " << courses.at(NewKeyToAssign).next->course.prereq2 << std::endl;
+                }
+            }
+        }
         std::cout << "Name: " << courses.at(NewKeyToAssign).course.name << std::endl;
         if(courses.at(NewKeyToAssign).course.prereq1 != "noname1"){
             std::cout << "Prerequisite 1: " << courses.at(NewKeyToAssign).course.prereq1 << std::endl;
@@ -261,9 +294,9 @@ void HashTable::menu(){
                 }
                 std::cout << "Enter the course name.\n";
                 std::cin >> inputchoice;
-                for(char c : inputchoice){
-                    if(islower(c)){
-                        _toupper(c);
+                for(int i = 0; i < inputchoice.length() - 1; ++i){
+                    if(islower(inputchoice.at(i))){
+                       inputchoice.at(i) = toupper(inputchoice.at(i));
                     }
                 }
                 Search(inputchoice);

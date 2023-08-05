@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ContactService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Appointment</a> &gt; <a href="index.source.html" class="el_package">org.SNHU</a> &gt; <span class="el_source">ContactService.java</span></div><h1>ContactService.java</h1><pre class="source lang-java linenums">package org.SNHU;
+import org.mockito.*;
+import java.util.HashMap;
+/*
+ * @author Carlos Affonso
+ * Reqs:
+ * 		
+    The contact service shall be able to add contacts with a unique ID.
+    The contact service shall be able to delete contacts per contact ID.
+    The contact service shall be able to update contact fields per contact ID. The following fields are updatable:
+        firstName
+        lastName
+        Number
+        Address
+
+ */
+<span class="fc" id="L17">public class ContactService{</span>
+
+	@Mock
+<span class="fc" id="L20">	public static HashMap&lt;String, Contact&gt; Contacts = new HashMap&lt;String, Contact&gt;();</span>
+
+	public void addContact(Contact newContact){
+<span class="fc" id="L23">		Contacts.put(newContact.contact_ID, newContact);</span>
+<span class="fc" id="L24">		}</span>
+	public void deleteContact(String ID){
+<span class="pc bpc" id="L26" title="1 of 2 branches missed.">		if(Contacts.containsKey(ID)){</span>
+<span class="fc" id="L27">			Contacts.remove(ID);</span>
+		}
+		else{
+<span class="nc" id="L30">			throw new IllegalArgumentException(&quot;Invalid ID&quot;);</span>
+		}
+<span class="fc" id="L32">	}</span>
+	public void updateContact(int choice,String userID, String information){
+<span class="pc bpc" id="L34" title="1 of 5 branches missed.">		switch(choice){</span>
+			case 1:
+				//update first name and is less than 10 characters
+<span class="pc bpc" id="L37" title="1 of 2 branches missed.">				if(information.length() &lt; 10){</span>
+<span class="fc" id="L38">					Contacts.get(userID).setFirstName(information);</span>
+				}
+			case 2:
+				//update last name
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">				if(information.length() &lt; 10) {</span>
+<span class="fc" id="L43">					Contacts.get(userID).setLastName(information);</span>
+				}
+				break;
+			case 3:
+				//update phone
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">				if(information.length() &lt; 10) {</span>
+<span class="nc" id="L49">					Contacts.get(userID).setPhone(information);</span>
+				}
+				break;
+			case 4:
+				//update address
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">				if(information.length() &lt; 30) {</span>
+<span class="fc" id="L55">					Contacts.get(userID).setAddress(information);</span>
+				}
+				break;
+			default:
+				//error
+<span class="nc" id="L60">				throw new IllegalArgumentException(&quot;Invalid choice&quot;);</span>
+		}
+<span class="fc" id="L62">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Task.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Appointment</a> &gt; <a href="index.source.html" class="el_package">org.SNHU</a> &gt; <span class="el_source">Task.java</span></div><h1>Task.java</h1><pre class="source lang-java linenums">package org.SNHU;
+import java.util.concurrent.atomic.AtomicLong;
+/*
+@Author: Carlos Affonso
+@Date: 2021-03-15
+*/
+/*
+
+    The task object shall have a
+    required unique task ID String that cannot be longer
+    than 10 characters. The task ID shall not be null and shall not be updatable.
+
+    The task object shall have a
+    required name String field that cannot be longer
+    than 20 characters. The name field shall not be null.
+
+    The task object shall have a required description String field that cannot be longer
+    than 50 characters. The description field shall not be null.
+
+ */
+public class Task {
+<span class="pc" id="L22">    private final String id = counter.toString();</span>
+    private String name;
+    private String description;
+<span class="fc" id="L25">    private static AtomicLong counter = new AtomicLong();</span>
+
+<span class="fc" id="L27">    public Task(){</span>
+<span class="fc" id="L28">        setId(this);</span>
+<span class="fc" id="L29">        this.name = &quot;default&quot;;</span>
+<span class="fc" id="L30">        this.description = &quot;nodesc&quot;;</span>
+<span class="fc" id="L31">    }</span>
+<span class="nc" id="L32">    public Task(String name, String description) {</span>
+<span class="nc" id="L33">        setId(this);</span>
+<span class="nc" id="L34">        this.setName(name);</span>
+<span class="nc" id="L35">        this.setDescription(description);</span>
+<span class="nc" id="L36">    }</span>
+
+    public String getId() {
+<span class="fc" id="L39">        return id;</span>
+    }
+
+    public String setId(Task task) {
+<span class="fc" id="L43">        String id =  counter.toString();</span>
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">        if (id.length() &gt; 10) {</span>
+<span class="nc" id="L45">            throw new IllegalArgumentException(&quot;Invalid id&quot;);</span>
+        }
+<span class="fc" id="L47">        counter.incrementAndGet();</span>
+<span class="fc" id="L48">        return id;</span>
+    }
+
+    public String getName() {
+<span class="fc" id="L52">        return name;</span>
+    }
+
+    public void setName(String name) {
+<span class="pc bpc" id="L56" title="1 of 4 branches missed.">        if (name == null || name.length() &gt; 20) {</span>
+<span class="fc" id="L57">            throw new IllegalArgumentException(&quot;Invalid name&quot;);</span>
+        }
+<span class="fc" id="L59">        this.name = name;</span>
+<span class="fc" id="L60">    }</span>
+
+    public String getDescription() {
+<span class="fc" id="L63">        return description;</span>
+    }
+
+    public void setDescription(String description) {
+<span class="pc bpc" id="L67" title="1 of 4 branches missed.">        if (description == null || description.length() &gt; 50) {</span>
+<span class="fc" id="L68">            throw new IllegalArgumentException(&quot;Invalid description&quot;);</span>
+        }
+<span class="fc" id="L70">        this.description = description;</span>
+<span class="fc" id="L71">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
