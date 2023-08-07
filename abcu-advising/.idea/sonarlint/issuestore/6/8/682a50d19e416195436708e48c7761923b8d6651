@@ -1,0 +1,44 @@
+
+=	cpp:S1481E"#unused variable 'commaNotFoundFlag'(¢ €¢ÿÿÿÿÿ
+6	cpp:S1481F"!unused variable 'recentEntryFlag'(äýŒÈ
+9	cpp:S1481H"unused variable 'commaLocation'(ù©µ¬ÿÿÿÿÿ
+[	cpp:S5277”"Eignoring return value of function declared with 'nodiscard' attribute(´ê­Ð
+?	cpp:S1117Ñ"$declaration shadows a local variable(º·×Ñúÿÿÿÿ
+:	cpp:S1117×"$declaration shadows a local variable(–ó¨
+?	cpp:S1117ä"$declaration shadows a local variable(Ïù°æùÿÿÿÿ
+m	cpp:S5276ã"Wimplicit conversion loses integer precision: 'size_type' (aka 'unsigned long') to 'int'(“‚Ñ…
+e	cpp:S5276«"Oimplicit conversion loses integer precision: 'int' to 'value_type' (aka 'char')(¿ê™ü
+	cpp:S3230"eDo not assign data members in a constructor. Initialize member "courseNum" in an initialization list.(ÆÌ×¿þÿÿÿÿ
+z	cpp:S3230"`Do not assign data members in a constructor. Initialize member "name" in an initialization list.(º€ÁØúÿÿÿÿ
+x	cpp:S3230"cDo not assign data members in a constructor. Initialize member "prereq1" in an initialization list.(Úëã™
+}	cpp:S3230"cDo not assign data members in a constructor. Initialize member "prereq2" in an initialization list.(žäå¶úÿÿÿÿ
+w	cpp:S3230#"bDo not assign data members in a constructor. Initialize member "course" in an initialization list.(‚ðü‹
+I	cpp:S1709""/Add the "explicit" keyword to this constructor.(¿Èü–þÿÿÿÿ
+K	cpp:S1238""1Pass large object "course" by reference to const.(¿Èü–þÿÿÿÿ
+w	cpp:S3230'"bDo not assign data members in a constructor. Initialize member "course" in an initialization list.(‚ðü‹
+t	cpp:S3230("_Do not assign data members in a constructor. Initialize member "key" in an initialization list.(¬´ó
+F	cpp:S1238&"1Pass large object "course" by reference to const.(ôÑÚµ
+N	cpp:S1181u"9Catch a more specific exception instead of a generic one.(½˜ã¤
+=	cpp:S1110T"#Remove these redundant parentheses.(ê±¼˜ûÿÿÿÿ
+Zcpp:S112R"FDefine and throw a dedicated exception instead of using a generic one.(‡Ëøì
+Zcpp:S112U"FDefine and throw a dedicated exception instead of using a generic one.(ñ·£ú
+Zcpp:S112k"FDefine and throw a dedicated exception instead of using a generic one.(ÔñÆÅ
+>	cpp:S5817y")This function should be declared "const".(Ñ¿ð’
+F	cpp:S1238|"1Pass large object "course" by reference to const.( ÎÂÄ
+[cpp:S924„"FReduce the number of nested "break" statements from 2 to 1 authorized.(…¯º¨
+=	cpp:S5827Ž"'Replace the redundant type with "auto".(÷Þ”ä
+g	cpp:S5025Ž"QReplace the use of "new" with an operation that automatically manages the memory.(÷Þ”ä
+l	cpp:S5025–"QReplace the use of "new" with an operation that automatically manages the memory.(±ã×‹ùÿÿÿÿ
+K	cpp:S1659§"0Define each identifier in a dedicated statement.(»¼ûîûÿÿÿÿ
+B	cpp:S1121±",Extract the assignment from this expression.(¸÷œÛ
+B	cpp:S1121±",Extract the assignment from this expression.(¸÷œÛ
+^	cpp:S5566Ñ"CChange this raw for-loop to a range for-loop or an "std::for_each".(º·×Ñúÿÿÿÿ
+J	cpp:S6003È"4Replace this use of "push_back" with "emplace_back".(ñ”ÓÝ
+ˆ	cpp:S5350ä"mMake the type of this variable a reference-to-const. The current type of "itr" is "struct HashTable::Node &".(Ïù°æùÿÿÿÿ
+\	cpp:S1238è"FPass expensive to copy object "courseNumSearch" by reference to const.(í‚¦ó
+bcpp:S134÷"MRefactor this code to not nest more than 3 if|for|do|while|switch statements.(º§Ë·
+gcpp:S134ª"MRefactor this code to not nest more than 3 if|for|do|while|switch statements.(ÓÛ¢Åúÿÿÿÿ
+g	cpp:S5025¹"QReplace the use of "new" with an operation that automatically manages the memory.(«’º˜
+€	cpp:S3230 "kDo not use the constructor's initializer list for data member "next". Use the in-class initializer instead.(‹œÂù
+	cpp:S3230 "jDo not use the constructor's initializer list for data member "key". Use the in-class initializer instead.(‹œÂù
+?	cpp:S1854o"*Value stored to 'commaCount' is never read(ä¡ÙÎ

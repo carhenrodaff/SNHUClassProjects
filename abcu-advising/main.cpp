@@ -6,7 +6,7 @@
 #include <sstream>
 
 
-int defaultTableSize = 10;
+constexpr int defaultTableSize = 10;
 
 class HashTable {
     struct Course {
@@ -312,5 +312,6 @@ void HashTable::menu(){
 int main(){
     auto init = new HashTable;
     init->menu();
+    delete HashTable;
     return 0;
 }

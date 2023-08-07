@@ -1,0 +1,3 @@
+/home/caheroaf/repos/SNHUClassProjects/untitled/cmake-build-debug/CMakeFiles/untitled.dir
+/home/caheroaf/repos/SNHUClassProjects/untitled/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/caheroaf/repos/SNHUClassProjects/untitled/cmake-build-debug/CMakeFiles/rebuild_cache.dir
